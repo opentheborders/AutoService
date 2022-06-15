@@ -1,11 +1,11 @@
-package com.auto.autoservice.security.jwt;
+package com.auto.autoservice.jwt;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.auto.autoservice.security.services.UserDetailsServiceImpl;
+import com.auto.autoservice.services.auth.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

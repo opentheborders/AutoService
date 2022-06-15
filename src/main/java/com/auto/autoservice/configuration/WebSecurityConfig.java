@@ -1,7 +1,7 @@
-package com.auto.autoservice.security;
-import com.auto.autoservice.security.jwt.AuthEntryPointJwt;
-import com.auto.autoservice.security.jwt.AuthTokenFilter;
-import com.auto.autoservice.security.services.UserDetailsServiceImpl;
+package com.auto.autoservice.configuration;
+import com.auto.autoservice.jwt.AuthEntryPointJwt;
+import com.auto.autoservice.jwt.AuthTokenFilter;
+import com.auto.autoservice.services.auth.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,9 +49,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
+                .authorizeRequests()
+                .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/api/test/**").permitAll()
                 .anyRequest().authenticated();
+
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 }

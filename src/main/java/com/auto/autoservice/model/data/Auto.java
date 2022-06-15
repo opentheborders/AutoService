@@ -22,7 +22,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-
 @NoArgsConstructor
 @Component
 @Document(collection = "autos")
@@ -30,8 +29,6 @@ public class Auto {
 
         @Id
         String id;
-
-
 
         @NotBlank
         @Size(max = 20)
